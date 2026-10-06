@@ -7,6 +7,12 @@ export class ProfileService{
     constructor(private readonly prismaservice: PrismaService){}
 
     async getAll(): Promise<Profile[]>{
-        return this.prismaservice.profile.findMany({})
+        return this.prismaservice.profile.findMany({
+            include:{
+                skills: true,
+                projects: true,
+                experience: true
+            }
+        })
     }
 }
