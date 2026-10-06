@@ -1,0 +1,39 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Experience {
+  achievements: String
+  company: String
+  id: Int!
+  period: String
+  position: String
+  profileId: Float
+}
+
+type Profile {
+  description: String
+  experience: [Experience!]
+  id: Int!
+  links: String
+  name: String
+  projects: [Projects!]
+  skills: [Skills!]
+}
+
+type Projects {
+  id: Int!
+  link: String
+  name: String
+  profileId: Float
+}
+
+type Query {
+  profile: [Profile!]!
+}
+
+type Skills {
+  id: Int!
+  name: String
+  profileId: Float
+}
