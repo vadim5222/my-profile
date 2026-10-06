@@ -17,6 +17,7 @@ model Profile{
   id Int @id @default(autoincrement())
   name String 
   description String
+  links String?
   skills Skills[]
   experience Experience[]
   projects Projects[]
@@ -33,6 +34,8 @@ model Experience{
   id Int @id @default(autoincrement())
   company String
   position String
+  period String?
+  achievements String?
   profileId Int
   profile Profile? @relation(fields: [profileId], references: [id])
 }
@@ -41,6 +44,7 @@ model Experience{
 model Projects{
   id Int @id @default(autoincrement())
   name String
+  link String?
   profileId Int
   profile Profile? @relation(fields: [profileId], references: [id])
 }

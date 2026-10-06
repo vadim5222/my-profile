@@ -14,7 +14,8 @@ async function main() {
     const profile = await prisma.profile.create({
         data:{
             name:'Кузнецов Вадим',
-            description:'Backend/FullStack Developer'
+            description:'Backend/FullStack Developer',
+            links: 'https://github.com/vadim5222'
         }
     })
     console.log(profile)
@@ -36,18 +37,18 @@ async function main() {
     console.log(skills)
     const projects = await prisma.projects.createMany({
         data:[
-            {name:'FullStack service for detecting phishing attacks', profileId:1},
-            {name:'Servie for computer store', profileId:1},
-            {name:'End-to-end messenger', profileId:1},
-            {name:'Recipes service', profileId:1},
-            {name:'FullStack project with include LLM-model', profileId:1}
+            {name:'FullStack service for detecting phishing attacks', profileId:1, link:'https://github.com/vadim5222/phishing_attacks.git'},
+            {name:'Servie for computer store', profileId:1, link:'https://github.com/vadim5222/computer-store.git'},
+            {name:'End-to-end messenger', profileId:1, link:'https://github.com/vadim5222/messenger.git'},
+            {name:'Recipes service', profileId:1, link:'https://github.com/vadim5222/recipes.git'},
+            {name:'FullStack project with include LLM-model', profileId:1, link:'https://github.com/vadim5222/practice-project.git'}
         ]
     })
     console.log(projects)
     const experience = await prisma.experience.createMany({
         data:[
-            {company: 'ПАО Татнефть', position:'FullStack Developer', profileId:1},
-            {company: 'ООО ТатАСУ', position:'FullStack Developer', profileId:1},
+            {company: 'ПАО Татнефть', position:'FullStack Developer', profileId:1, period:'01.06.2025 - 01.06.2026', achievements:'Всероссийский чемпионат "Профессионалы" - 1 место'},
+            {company: 'ООО ТатАСУ', position:'FullStack Developer', profileId:1, period:'01.06.2026 - 31.08.2026', achievements:'Республиканская олимпиада по веб-разработке - 2 место'},
         ]
     })
     console.log(experience)
