@@ -1,0 +1,28 @@
+version: '3.9'
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "kuznetsov2007"
+      POSTGRES_DB: "my-profile"
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d
+    ports:
+      - '5432:5432'
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d my-profile"]
+      interval: 5s
+      timeout: 2s
+      retries: 20
+  
+  backend:
+    build: .
+    ports:
+      - '3000:3000'
+    depends_on:
+      db:
+        condition: service_healthy
+      
+    environment:
+      DATABASE_URL: "postgresql://postgres:kuznetsov2007@db:5432/my-profile?schema=public"
