@@ -1,7 +1,7 @@
 import { Field, Int, ObjectType } from "@nestjs/graphql";
-import {Skills} from '../skills/skills.model'
-import {Projects} from '../projects/projects.model'
-import { Experience } from "src/experience/experience.model";
+import {Skills} from '../skills/skills.model.js'
+import {Projects} from '../projects/projects.model.js'
+import { Experience } from "src/experience/experience.model.js";
 
 
 @ObjectType()
